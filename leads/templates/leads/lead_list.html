@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .leads{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 6px;
+            padding-right: 6px;
+            margin-top: 10px;
+            background-color: #f6f6f6;
+            width: 100%;
+
+        }
+        .leads h2{
+            margin-top: 0px;
+        }
+        .leads p{
+            margin-top: 0px;
+        }
+
+    </style>
+</head>
+<body>
+    <a href = "{% url 'leads:lead-create' %}"> 
+        <h1>Create a new lead</h1>
+    </a>
+        <hr/>
+    <h1>This is lead page</h1>
+        
+        {% for lead in leads %}
+        <div class="leads">
+            <a href = "/leads/{{ lead.pk }}/" > 
+                <h2>{{lead.first_name}} {{lead.last_name}}</h2>
+            </a>
+            <p>{{lead.age}}</p>
+            <p>{{lead.agent}}</p>
+        </div>    
+        {% endfor %}
+
+</body>
+</html>
